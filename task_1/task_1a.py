@@ -159,16 +159,13 @@ def pipeline(IMAGE_PATH: str) -> None:
 
 
     ids = list(get_aruco_markers(img).keys())
-
-
     lines = [
-        f"Detected marker IDs: [{','.join(map(str, ids))}]",
-        "",
+        f"Detected marker IDs: [{', '.join(map(str, ids))}]",
         f"Critical Survivors: {', '.join(critical_survivors)}",
         f"Stable Survivors: {', '.join(stable_survivors)}",
     ]
 
-    result_path = f"{os.path.basename(IMAGE_PATH).split(".")[0]}_results.txt"
+    result_path = f"{os.path.splitext(os.path.basename(IMAGE_PATH))[0]}_results.txt"
     with open(result_path, "w") as f:
         f.write("\n".join(lines) + "\n")
 
