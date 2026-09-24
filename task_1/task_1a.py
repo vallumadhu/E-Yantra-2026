@@ -1,3 +1,4 @@
+import os
 import cv2
 import string
 import argparse
@@ -167,7 +168,8 @@ def pipeline(IMAGE_PATH: str) -> None:
         f"Stable Survivors: {', '.join(stable_survivors)}",
     ]
 
-    with open("results.txt", "w") as f:
+    result_path = f"{os.path.basename(IMAGE_PATH).split(".")[0]}_results.txt"
+    with open(result_path, "w") as f:
         f.write("\n".join(lines) + "\n")
 
 
